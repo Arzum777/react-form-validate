@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
             <p>
                 <Link to="/sign-up">Sign up</Link>
             </p>
-
         </div>
     )
 }

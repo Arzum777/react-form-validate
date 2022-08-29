@@ -1,11 +1,10 @@
 import React from 'react';
 import {useContext} from "react";
-import {UserNameContext} from "../sign-up/sign-up";
-
+import {UserDataContext} from "../sign-up/sign-up";
 
  export function ChildContext() {
 
-     const userData = useContext(UserNameContext)
+     const userData = useContext(UserDataContext)
 
     return (
         <div>

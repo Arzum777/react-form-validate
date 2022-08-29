@@ -1,11 +1,11 @@
-import React, {useState, useContext} from 'react';
+import React, { useState} from 'react';
 import {ChildContext} from "../childContext/childContext";
 import {Link} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import {Row} from "react-bootstrap";
+export const UserDataContext = React.createContext({})
 
-export const UserNameContext = React.createContext({})
 
 export function SignUp() {
 
@@ -14,7 +14,7 @@ export function SignUp() {
         email: '',
         password: '',
         confirmPassword: '',
-    })
+    });
 
     const handleSignUpData = (e) => {
         const {name, value} = e.target
@@ -22,7 +22,7 @@ export function SignUp() {
             ...prestate,
             [name]: value
         }))
-    }
+    };
 
     const singUpDataConsole = () => {
         if (signupData.name.length &&
@@ -30,18 +30,18 @@ export function SignUp() {
             signupData.password.length &&
             signupData.confirmPassword.length
         ) {
-            console.log(signupData)
+            console.log(signupData);
 
         } else if ((signupData.password.length && signupData.confirmPassword.length) && (signupData.password.trim() === signupData.confirmPassword.trim())) {
-            console.log('password and password confirm is same as each other')
+            console.log('password and password confirm is same as each other');
         } else {
-            console.log('maybe one of states is empty')
+            console.log('maybe one of states is empty');
         }
-    }
+    };
 
     return (
-        <React.Fragment>
-            <UserNameContext.Provider value={signupData}>
+        <>
+            <UserDataContext.Provider value={signupData}>
                 <Row className='align-items-center justify-content-center'>
                     <Form className="signup-form w-25 my-3 ">
                         <Form.Group className='p-2'>
@@ -75,7 +75,7 @@ export function SignUp() {
                     <Link to='/sign-in'>SignIn</Link>
                     <ChildContext/>
                 </Row>
-            </UserNameContext.Provider>
-        </React.Fragment>
+            </UserDataContext.Provider>
+        </>
     )
 }
